@@ -31,33 +31,33 @@ _.map(['map', 'reduce', 'filter'], function(v) {
 
 cc.log(["\nLet's apply some simple functions to demonstrate the principles of ",
         "applicative programming."].join(''));
-cc.log("Given a the following array:");
-var array = _.shuffle(_.range(1, 11));
-console.log(array);
+cc.log("Given an array of our Goodreads review data...");
 
 cc.log("\n#green[map] with:\n%s\n//=> #bold[%s]",
   mapper.toString(),
-  _.map(array, mapper));
-function mapper(v) {
-  return Math.sqrt(v).toFixed(4);
+  _.map(reviews, mapper));
+function mapper(r) {
+  return r.book.title + " by " + r.book.authors.author.name;
 }
 
 cc.log("\n#green[reduce] with:\n%s\n//=> #bold[%s]",
   reducer.toString(),
-  _.reduce(array, reducer, 0));
-function reducer(memo, num) {
-  return (Math.round(memo) / 2) + num;
+  _.reduce(reviews, reducer, 0));
+function reducer(memo, r) {
+  return memo + (parseInt(r.book.num_pages, 10) || 0);
 }
 
 cc.log("\n#green[filter] with:\n%s\n//=> #bold[%s]",
   filterer.toString(),
-  _.filter(array, filterer));
-function filterer(v) {
-  return Math.abs(Math.sin(v)) > 0.75;
+  // and/but: the `_.map` is to just get the titles:
+  _.map(_.filter(reviews, filterer), mapper));
+function filterer(r) {
+  return parseInt(r.rating, 10) > 4;
 }
 
-cc.log(["\n(Many other examples like this: #green[each], #green[every], ",
-        "#green[sortBy]... the list goes on and on.)"].join(''));
+cc.log(["\nMany other examples like this: #green[each], #green[every], ",
+        "#green[some], #green[sortBy], #green[reduceRight], #green[reject]... ",
+        "the list goes on."].join(''));
 
 cc.log("\n#bold[How about making one of our own?]");
 cc.log("We will, when we make #green[best] in #green[higher-order.js]...");
