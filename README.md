@@ -13,8 +13,8 @@ inspired it, _Functional JavaScript_ by [Michael Fogus](http://blog.fogus.me/):
 You will need to create a `goodreads-config.js` in the project root and put the
 following into it:
 
-    exports.API_KEY        = 'your API key goes here';
-    exports.USER_ID        = 'some user ID goes here';
+    exports.API_KEY = 'your API key goes here';
+    exports.USER_ID = 'some user ID goes here';
 
 You can get an API key here: <http://www.goodreads.com/api/keys>
 
