@@ -1,0 +1,19 @@
+{
+  "name": "fun-js-talk",
+  "description": "Code for 6/19/2013 BurlingtonJS talk on Functional JavaScript",
+  "version": "0.0.1",
+  "author": "Rob Friesel <rob@founddrama.net> (http://blog.founddrama.net)",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": ["functional", "underscore", "demo"],
+  "dependencies": {
+    "colorize":     "~0.1.0",
+    "libxml-to-js": "~0.3.11",
+    "request":      "~2.21.0",
+    "underscore":   "~1.4.4"
+  },
+  "main": "app.js",
+  "engines": { "node": ">= 0.8.0" }
+}
