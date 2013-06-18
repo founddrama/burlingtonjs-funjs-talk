@@ -4,7 +4,7 @@ var fs = require('fs');
 var _  = require('underscore');
 var cc = require('colorize').console;
 
-var reviews = JSON.parse(fs.readFileSync('data.json').toString());
+var reviews = require('./get-shelf').loadData();
 
 cc.log("#bold[WHEREIN WE TALK ABOUT #yellow[APPLICATIVE FUNCTIONS]...]");
 cc.log(["(Material largely taken from Chapter 2 of #underline[#cyan[Functional ",

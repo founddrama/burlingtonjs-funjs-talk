@@ -4,9 +4,12 @@ var url     = require('url');
 var grConf  = require('./goodreads-config');
 var request = require('request');
 var parser  = require('libxml-to-js');
+var cc      = require('colorize').console;
 
-var ORDER = { A:'a', D:'d' };
-var SORT = {
+var FILE          = 'data.json';
+var DEFAULT_YEAR  = '2012';
+var ORDER         = { A:'a', D:'d' };
+var SORT          = {
   TITLE             : 'title',
   AUTHOR            : 'author',
   COVER             : 'cover',
@@ -63,7 +66,7 @@ function getShelf(shelf, callback) {
   shelf = shelf || new Date().getFullYear();
   var url = createReviewListUrl(shelf);
 
-  console.log('/timeline requesting: %s', url);
+  cc.log('#green[getShelf] requesting: #cyan[%s]', url);
 
   request(url, function(error, response, body) {
     if (!error && response.statusCode === 200) {
@@ -71,11 +74,9 @@ function getShelf(shelf, callback) {
 
       parser(body, '//reviews', function(error, result) {
         if (error) {
-          console.error('Error: %s', error);
+          cc.error('#red[Error:] %s', error);
           json = {"error": error};
         } else {
-          //br.BookRecord.prototype.shelf = shelf;
-          //json = result[0].review.map(br.BookRecord);
           json = result[0].review;
           json.sort(function(a, b) {
             return (new Date(a.started) > new Date(b.started)) ? 1 : -1;
@@ -88,9 +89,22 @@ function getShelf(shelf, callback) {
       });
     }
   });
-
 }
 
+function loadData() {
+  var data;
+  try {
+    data = JSON.parse(require('fs').readFileSync(FILE).toString());
+  } catch (e) {
+    cc.error("#red[Error from loadData:] %s", e);
+    cc.info("Maybe #green[%s] doesn't exist? Try running #green[app.js] to retrieve fresh data.", FILE);
+  }
 
+  return data;
+}
+
+exports.DEFAULT_YEAR        = DEFAULT_YEAR;
+exports.FILE                = FILE;
 exports.createReviewListUrl = createReviewListUrl;
 exports.getShelf            = getShelf;
+exports.loadData            = loadData;

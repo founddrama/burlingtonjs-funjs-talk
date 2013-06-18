@@ -6,7 +6,7 @@ var cc = require('colorize').console;
 
 var moment = require('moment');
 
-var reviewData = JSON.parse(fs.readFileSync('data.json').toString());
+var reviewData = require('./get-shelf').loadData();
 
 cc.log("#bold[WHEREIN WE TALK ABOUT #yellow[PROTOCOLS]...]");
 cc.log(["(Material inspired by Chapter 9 of #underline[#cyan[Functional JavaScript]]",
