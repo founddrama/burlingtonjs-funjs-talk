@@ -33,27 +33,38 @@ cc.log(["\nLet's apply some simple functions to demonstrate the principles of ",
         "applicative programming."].join(''));
 cc.log("Given an array of our Goodreads review data...");
 
-cc.log("\n#green[map] with:\n%s\n//=> #bold[%s]",
-  mapper.toString(),
-  _.map(reviews, mapper));
 function mapper(r) {
   return r.book.title + " by " + r.book.authors.author.name;
 }
 
-cc.log("\n#green[reduce] with:\n%s\n//=> #bold[%s]",
-  reducer.toString(),
-  _.reduce(reviews, reducer, 0));
+cc.log("\n#green[map] with:\n%s\n//=> #bold[%s]",
+  mapper.toString(),
+
+  _.map(reviews, mapper));
+//=> [Where the Sidewalk Ends: Poems and Drawings by Shel Silverstein, Imagine: How Creativity Works by Jonah Lehrer, etc.]
+
 function reducer(memo, r) {
   return memo + (parseInt(r.book.num_pages, 10) || 0);
 }
 
-cc.log("\n#green[filter] with:\n%s\n//=> #bold[%s]",
-  filterer.toString(),
-  // and/but: the `_.map` is to just get the titles:
-  _.map(_.filter(reviews, filterer), mapper));
+cc.log("\n#green[reduce] with:\n%s\n//=> #bold[%s]",
+  reducer.toString(),
+
+  _.reduce(reviews, reducer, 0));
+//=> 25220
+
 function filterer(r) {
   return parseInt(r.rating, 10) > 4;
 }
+
+cc.log("\n#green[filter] with:\n%s\n//=> #bold[%s]",
+  filterer.toString(),
+
+  // and/but: the `_.map` is to just get the titles:
+  _.map(_.filter(reviews, filterer), mapper));
+//=> [Where the Sidewalk Ends: Poems and Drawings by Shel Silverstein, The Stars My Destination by Alfred Bester, etc.]
+
+// Anyone familiar with callbacks is probably nodding vigorously right about now.
 
 cc.log(["\nMany other examples like this: #green[each], #green[every], ",
         "#green[some], #green[sortBy], #green[reduceRight], #green[reject]... ",

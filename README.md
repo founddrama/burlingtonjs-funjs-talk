@@ -28,6 +28,7 @@ We're ~~plundering~~ _borrowing_ a lot of this material from
 specifically chapters 2, 4, and 9. As such, the material in this presentation
 follows in basically the same order. Doing the demo, `node` in this order:
 
+  - `app.js` (to get the data; or provide your own `data.json`)
   - `applicative-functions.js`
   - `higher-order.js`
   - `protocols.js`

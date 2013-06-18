@@ -35,7 +35,7 @@ cc.log("See? Oldest is:",
 cc.log(["\nBut #green[_.max] always compares via #green[>]. #bold[How could we ",
         "be more functional?]"].join(''));
 
-// #best : a function that takes a function to do the comparing:
+// `best` : a function that takes a function to do the comparing:
 cc.log("\nWhat about #bold[#green[best]]?");
 cc.log("#yellow[%s]", best.toString());
 
@@ -59,10 +59,9 @@ cc.log(["If you examine the source code, you'll notice that it's a little longer
 
 cc.log("\n#bold[Now how about using #green[best] on some of our Goodreads review data?]");
 
-cc.log(["We can give use a function (#green[pages]) within the function that we ",
-        "pass to #green[best] to do our comparisons."].join(''));
-cc.log("Here's #green[pages]:");
-cc.log("#yellow[%s]", pages.toString());
+cc.log(["We can use a function (#green[pages]) within the function that we pass ",
+        "to #green[best] to do our comparisons."].join(''));
+cc.log("Here's #green[pages]:\n#yellow[%s]", pages.toString());
 
 function pages(r) {
   var pp = 0;
@@ -88,8 +87,8 @@ cc.log("\n#bold[But what about functions that return functions?]");
 cc.log(["Let's have a function called #green[bookComparatorBuilder] which, ",
         "given a (naïve namespaced) key returns a function that extracts that ",
         "(numeric) value from a Goodreads review object and compares it with ",
-        "another."].join(''));
-cc.log("#yellow[%s]", bookComparatorBuilder.toString());
+        "another.\n#yellow[%s]"].join(''), bookComparatorBuilder.toString());
+
 function bookComparatorBuilder(key) {
   function valueExtractor(obj) {
     var keys = key.split('.'),
