@@ -5,7 +5,7 @@
   "author": "Rob Friesel <rob@founddrama.net> (http://blog.founddrama.net)",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/founddrama/burlingtonjs-funjs-talk"
   },
   "keywords": ["functional", "underscore", "demo"],
   "dependencies": {
