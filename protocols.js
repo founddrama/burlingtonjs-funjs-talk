@@ -115,3 +115,24 @@ _.each(_.first(_.shuffle(reviews), 5), function(v) {
 // THE POINT: that we identify small bits of behavior (functions!) that we want
 // to see on our objects, and then write *those* functions, and selectively apply
 // *only those functions* to the objects where we need them.
+
+cc.log("\n#bold[So what's so cool about protocols?]");
+var reasons = [
+  ["Functions as units.", ["Create just the functions you need, as smallest-",
+    "possible modules to mixin to your objects."].join('')],
+  ["Functions create contracts.", ["The protocol defines the interface. Who ",
+    "cares what \"type\" it is? Just perform the operation."].join('')],
+  ["Loose coupling.", ["Protocols can be mixed into #underline[any] object. ",
+    "Enhance your objects this way and then stitch them together using small ",
+    "but poweful methods."].join('')],
+  ["Data-oriented.", ["Protocols are really only concerned with the object's ",
+    "data, not with what \"type\" they are."].join('')],
+  ["Composable.", ["Because protocols are basically just objects with functions ",
+    "on them, you can further enhance them in ad-hoc ways using your functional ",
+    "arsenal: through currying and partial application, other applicative ",
+    "functions, trampolines, pipelines, fluent APIs, and all the other higher-",
+    "order mojo."].join('')]
+];
+_.each(reasons, function(v, i) {
+  cc.log("  %d. #bold[%s] %s", i + 1, v[0], v[1]);
+});
