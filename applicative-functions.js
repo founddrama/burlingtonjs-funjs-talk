@@ -37,10 +37,11 @@ function mapper(r) {
   return r.book.title + " by " + r.book.authors.author.name;
 }
 
-cc.log("\n#green[map] with:\n%s\n//=> #bold[%s]",
+cc.log("\n#green[map] with:\n%s\n//=> #bold[%s] (and %d more)",
   mapper.toString(),
 
-  _.map(reviews, mapper));
+  _.map(_.take(reviews, 5), mapper),
+  reviews.length - 5);
 //=> [Where the Sidewalk Ends: Poems and Drawings by Shel Silverstein, Imagine: How Creativity Works by Jonah Lehrer, etc.]
 
 function reducer(memo, r) {

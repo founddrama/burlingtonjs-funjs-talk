@@ -1,4 +1,4 @@
-/*jshint node:true*/
+/*jshint node:true curly:false*/
 
 var fs = require('fs');
 var _  = require('underscore');
@@ -64,15 +64,8 @@ cc.log(["We can use a function (#green[pages]) within the function that we pass 
 cc.log("Here's #green[pages]:\n#yellow[%s]", pages.toString());
 
 function pages(r) {
-  var pp = 0;
-  try {
-    var _p = parseInt(r.book.num_pages, 10);
-    if (_.isNumber(_p) && !isNaN(_p)) {
-      pp = _p;
-    }
-  } catch(e) {
-    pp = 0;
-  }
+  var pp = parseInt(r.book.num_pages, 10);
+  if (isNaN(pp)) pp = 0;
   return pp;
 }
 
@@ -92,24 +85,19 @@ cc.log(["Let's have a function called #green[bookComparatorBuilder] which, ",
 function bookComparatorBuilder(key) {
   function valueExtractor(obj) {
     var keys = key.split('.'),
-        _return = 0,
         value, k;
 
-    try {
-      while (keys.length) {
-        k = keys.shift();
-        value = value ? value[k] : obj[k];
-      }
-      value = parseFloat(value);
+    while (keys.length) {
+      k = keys.shift();
+      value = value ? value[k] : obj[k];
+    }
+    value = parseFloat(value);
 
-      if (_.isNumber(value) && !isNaN(value)) {
-        _return = value;
-      }
-    } catch (e) {
-      _return = 0;
+    if (isNaN(value)) {
+      value = 0;
     }
 
-    return _return;
+    return value;
   }
 
   return function(x, y) {

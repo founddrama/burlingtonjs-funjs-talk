@@ -33,3 +33,16 @@ follows in basically the same order. Doing the demo, `node` in this order:
   - `higher-order.js`
   - `protocols.js`
 
+## Resources
+
+* _Functional JavaScript_:
+  [the book](http://www.amazon.com/gp/product/1449360726/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449360726&linkCode=as2&tag=founddramadot-20),
+  [the code from the book](https://github.com/funjs/book-source),
+  and [the website](http://www.functionaljavascript.com/)
+* [Underscore.js](http://underscorejs.org)
+* [underscore-contrib](https://github.com/documentcloud/underscore-contrib)
+* [Lemonad](https://github.com/fogus/lemonad)
+* Oliver Steele's [Functional JavaScript](http://osteele.com/sources/javascript/functional/)
+* Reginald Braithwaite's [allong.es](http://allong.es/)
+* Brian McKenna's [Bilby.js](https://github.com/puffnfresh/bilby.js)
+* [ClojureScript](https://github.com/clojure/clojurescript)
