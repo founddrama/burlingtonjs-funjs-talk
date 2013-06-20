@@ -8,6 +8,8 @@ If you liked this talk, you should consider buying a copy of the book that
 inspired it, _Functional JavaScript_ by [Michael Fogus](http://blog.fogus.me/):
 [http://www.amazon.com/gp/product/1449360726](http://www.amazon.com/gp/product/1449360726/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449360726&linkCode=as2&tag=founddramadot-20)
 
+The slides are on SlideShare: [slideshare.net/founddrama/funjs](http://www.slideshare.net/founddrama/funjs)
+
 ## Running the App
 
 You will need to create a `goodreads-config.js` in the project root and put the
